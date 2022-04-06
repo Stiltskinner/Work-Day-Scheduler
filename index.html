@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Assets/css/style.css" />
+    <title>Work Day Scheduler</title>
+  </head>
+
+  <body>
+    <header class="jumbotron">
+      <h1 class="display-3">Work Day Scheduler</h1>
+      <p class="lead">A simple calendar app for scheduling your work day</p>
+      <p id="currentDay" class="lead"></p>
+    </header>
+    <div class="container">
+      <!-- Timeblocks go here -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./Assets/js/script.js"></script>
+  </body>
+</html>
+
+<!-- 
+GIVEN I am using a daily planner to create a schedule
+WHEN I open the planner
+THEN the current day is displayed at the top of the calendar
+--Use moment.js to retrieve the current day with day and date and display to currentDay id
+WHEN I scroll down
+THEN I am presented with timeblocks for standard business hours
+--create a table using bootstrap in html that has a row for each hour from 9 AM to 5 PM. Each row should have 3 columns, one that just has the preset time in HTML, one that functions as an input, and one that is a button to save the inputs
+WHEN I view the timeblocks for that day
+THEN each timeblock is color coded to indicate whether it is in the past, present, or future
+--check moment.js for current time using setInterval. If time is later than current time, background-color gray for input row, if present-time range of an hour back-ground color red, if time is before current time, background color green
+WHEN I click into a timeblock
+THEN I can enter an event
+--needs an event listener to check for submitted inputs and call for localstorage function
+WHEN I click the save button for that timeblock
+THEN the text for that event is saved in local storage
+--needs a function to save user inputs into local storage, need a function to retrieve inputs from local storage and display them to the form when the user starts the page
+WHEN I refresh the page
+THEN the saved events persist -->
