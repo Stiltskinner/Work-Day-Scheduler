@@ -119,6 +119,20 @@ function updateColors() {
     }
 }
 
+// This does not work. I want to use it to check if the user clicked a button, and if they did, go to the input value of the cousin element and save it to local storage. Right now I'm just console logging it to test it.
+function saveText(event) {
+    event.preventDefault();
+    var element = event.target;
+    
+    if (element.matches("button")) {
+       $("savedText") = element.parent().parent().children(1).children().val();
+       console.log(savedText);
+    }
+
+}
+// Event Listeners
+eventTable.on("click", saveText);
+
 // Calls displayDay so there isn't a 1 second lag between opening page and the day displaying the first time. then calls timeUpdate to continually check the time and update the display day when it rolls over. timeUpdate also continually checks for the time and updates background colors of cells in the table as appropriate
 displayDay();
 timeUpdate();
