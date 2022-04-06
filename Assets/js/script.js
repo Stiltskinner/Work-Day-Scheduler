@@ -1,7 +1,8 @@
 // Selector variables
 var currentDay = document.getElementById("currentDay");
 // jquery selector variables
-var eventTable = $("event-table");
+var eventTable = $("#event-table");
+var scheduler = $("#scheduler");
 
 var nineAM = $("#9AM");
 var tenAM = $("#10AM");
@@ -14,16 +15,17 @@ var fourPM = $("#4PM");
 var fivePM = $("#5PM");
 
 // Global variables
-var check9AM = moment("9:00am", "h:mm:ss");
-var check10AM = moment("10:00am", "h:mm:ss");
-var check11AM = moment("11:00am", "h:mm:ss");
-var check12PM = moment("12:00pm", "h:mm:ss");
-var check1PM = moment("1:00pm", "h:mm:ss");
-var check2PM = moment("2:00pm", "h:mm:ss");
-var check3PM = moment("3:00pm", "h:mm:ss");
-var check4PM = moment("4:00pm", "h:mm:ss");
-var check5PM = moment("5:00pm", "h:mm:ss");
-var check6PM = moment("6:00pm", "h:mm:ss");
+var check9AM = moment("9:00am", "h:mm:ss a");
+var check10AM = moment("10:00am", "h:mm:ss a");
+var check11AM = moment("11:00am", "h:mm:ss a");
+var check12PM = moment("12:00pm", "h:mm:ss a");
+var check1PM = moment("1:00pm", "h:mm:ss a");
+var check2PM = moment("2:00pm", "h:mm:ss a");
+var check3PM = moment("3:00pm", "h:mm:ss a");
+var check4PM = moment("4:00pm", "h:mm:ss a");
+var check5PM = moment("5:00pm", "h:mm:ss a");
+var check6PM = moment("6:00pm", "h:mm:ss a");
+var check11PM = moment("11:00pm", "h:mm:ss a");
 
 // Current day display function
 function displayDay() {
@@ -31,13 +33,16 @@ function displayDay() {
     currentDay.textContent = now.format("MMMM Do");
 }
 
-// Interval to check for current time every second and updates the display date if it changes
+// Interval to check for current time every second and updates the display date if it changes. It also fires the upDate colors function every second so it can check for the current time and update in real time
 function timeUpdate() { 
    setInterval(displayDay, 1000);
+   setInterval(updateColors, 1000);
 }
 
+// This function changes the background color of the Event column of the table depending on the time. If it is the current hour, it sets it to red, if it's after the current hour, sets it to gray, and it sets them all to green if it's before 9 AM, basically meaning they all reset to green after midnight
 function updateColors() {
     if (moment().isBefore(check9AM)) {
+        eventTable.children().children().children("td").children().removeClass("bg-success bg-secondary bg-alert").addClass("bg-success");
         eventTable.children().children().children("td").removeClass("bg-success bg-secondary bg-alert").addClass("bg-success");
     }
     if (moment().isBetween(check9AM, check10AM)) {
@@ -108,10 +113,12 @@ function updateColors() {
         fourPM.addClass("bg-secondary").removeClass("bg-success bg-alert");
         fourPM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
     }
+    if (moment().isAfter(check6PM)) {
+        fivePM.addClass("bg-secondary").removeClass("bg-success bg-alert");
+        fivePM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
+    }
 }
 
-
-// Calls displayDay so there isn't a 1 second lag between opening page and the day displaying the first time. then calls timeUpdate to continually check the time and update the display day when it rolls over.
+// Calls displayDay so there isn't a 1 second lag between opening page and the day displaying the first time. then calls timeUpdate to continually check the time and update the display day when it rolls over. timeUpdate also continually checks for the time and updates background colors of cells in the table as appropriate
 displayDay();
 timeUpdate();
-updateColors();
