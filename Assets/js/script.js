@@ -2,8 +2,6 @@
 var currentDay = document.getElementById("currentDay");
 // jquery selector variables
 var eventTable = $("#event-table");
-var scheduler = $("#scheduler");
-
 var nineAM = $("#9AM");
 var tenAM = $("#10AM");
 var elevenAM = $("#11AM");
@@ -25,7 +23,6 @@ var check3PM = moment("3:00pm", "h:mm:ss a");
 var check4PM = moment("4:00pm", "h:mm:ss a");
 var check5PM = moment("5:00pm", "h:mm:ss a");
 var check6PM = moment("6:00pm", "h:mm:ss a");
-var check11PM = moment("11:00pm", "h:mm:ss a");
 
 // Current day display function
 function displayDay() {
@@ -42,102 +39,157 @@ function timeUpdate() {
 // This function changes the background color of the Event column of the table depending on the time. If it is the current hour, it sets it to red, if it's after the current hour, sets it to gray, and it sets them all to green if it's before 9 AM, basically meaning they all reset to green after midnight
 function updateColors() {
     if (moment().isBefore(check9AM)) {
-        eventTable.children().children().children("td").children().removeClass("bg-success bg-secondary bg-alert").addClass("bg-success");
-        eventTable.children().children().children("td").removeClass("bg-success bg-secondary bg-alert").addClass("bg-success");
+        eventTable.children().children().children("td").children().removeClass("future past present").addClass("future");
+        eventTable.children().children().children("td").removeClass("future past present").addClass("future");
     }
     if (moment().isBetween(check9AM, check10AM)) {
-        nineAM.addClass("bg-danger").removeClass("bg-success bg-secondary");
-        nineAM.children().addClass("bg-danger").removeClass("bg-success bg-secondary");
+        nineAM.addClass("bg-danger").removeClass("future past");
+        nineAM.children().addClass("bg-danger").removeClass("future past");
     }
     if (moment().isBetween(check10AM, check11AM)) {
-        tenAM.addClass("bg-danger").removeClass("bg-success bg-secondary");
-        tenAM.children().addClass("bg-danger").removeClass("bg-success bg-secondary");
+        tenAM.addClass("bg-danger").removeClass("future past");
+        tenAM.children().addClass("bg-danger").removeClass("future past");
     }
     if (moment().isBetween(check11AM, check12PM)) {
-        elevenAM.addClass("bg-danger").removeClass("bg-success bg-secondary");
-        elevenAM.children().addClass("bg-danger").removeClass("bg-success bg-secondary");
+        elevenAM.addClass("bg-danger").removeClass("future past");
+        elevenAM.children().addClass("bg-danger").removeClass("future past");
     }
     if (moment().isBetween(check12PM, check1PM)) {
-        twelvePM.addClass("bg-danger").removeClass("bg-success bg-secondary");
-        twelvePM.children().addClass("bg-danger").removeClass("bg-success bg-secondary");
+        twelvePM.addClass("bg-danger").removeClass("future past");
+        twelvePM.children().addClass("bg-danger").removeClass("future past");
     }
     if (moment().isBetween(check1PM, check2PM)) {
-        onePM.addClass("bg-danger").removeClass("bg-success bg-secondary");
-        onePM.children().addClass("bg-danger").removeClass("bg-success bg-secondary");
+        onePM.addClass("bg-danger").removeClass("future past");
+        onePM.children().addClass("bg-danger").removeClass("future past");
     }
     if (moment().isBetween(check2PM, check3PM)) {
-        twoPM.addClass("bg-danger").removeClass("bg-success bg-secondary");
-        twoPM.children().addClass("bg-danger").removeClass("bg-success bg-secondary");
+        twoPM.addClass("bg-danger").removeClass("future past");
+        twoPM.children().addClass("bg-danger").removeClass("future past");
     }
     if (moment().isBetween(check3PM, check4PM)) {
-        threePM.addClass("bg-danger").removeClass("bg-success bg-secondary");
-        threePM.children().addClass("bg-danger").removeClass("bg-success bg-secondary");
+        threePM.addClass("bg-danger").removeClass("future past");
+        threePM.children().addClass("bg-danger").removeClass("future past");
     }
     if (moment().isBetween(check4PM, check5PM)) {
-        fourPM.addClass("bg-danger").removeClass("bg-success bg-secondary");
-        fourPM.children().addClass("bg-danger").removeClass("bg-success bg-secondary");
+        fourPM.addClass("bg-danger").removeClass("future past");
+        fourPM.children().addClass("bg-danger").removeClass("future past");
     }
     if (moment().isBetween(check5PM, check6PM)) {
-        fivePM.addClass("bg-danger").removeClass("bg-success bg-secondary");
-        fivePM.children().addClass("bg-danger").removeClass("bg-success bg-secondary");
+        fivePM.addClass("bg-danger").removeClass("future past");
+        fivePM.children().addClass("bg-danger").removeClass("future past");
     }
     if (moment().isAfter(check10AM)) {
-        nineAM.addClass("bg-secondary").removeClass("bg-success bg-alert");
-        nineAM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
+        nineAM.addClass("past").removeClass("future present");
+        nineAM.children().addClass("past").removeClass("future present");
     }
     if (moment().isAfter(check11AM)) {
-        tenAM.addClass("bg-secondary").removeClass("bg-success bg-alert");
-        tenAM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
+        tenAM.addClass("past").removeClass("future present");
+        tenAM.children().addClass("past").removeClass("future present");
     }
     if (moment().isAfter(check12PM)) {
-        elevenAM.addClass("bg-secondary").removeClass("bg-success bg-alert");
-        elevenAM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
+        elevenAM.addClass("past").removeClass("future present");
+        elevenAM.children().addClass("past").removeClass("future present");
     }
     if (moment().isAfter(check1PM)) {
-        twelvePM.addClass("bg-secondary").removeClass("bg-success bg-alert");
-        twelvePM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
+        twelvePM.addClass("past").removeClass("future present");
+        twelvePM.children().addClass("past").removeClass("future present");
     }
     if (moment().isAfter(check2PM)) {
-        onePM.addClass("bg-secondary").removeClass("bg-success bg-alert");
-        onePM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
+        onePM.addClass("past").removeClass("future present");
+        onePM.children().addClass("past").removeClass("future present");
     }
     if (moment().isAfter(check3PM)) {
-        twoPM.addClass("bg-secondary").removeClass("bg-success bg-alert");
-        twoPM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
+        twoPM.addClass("past").removeClass("future present");
+        twoPM.children().addClass("past").removeClass("future present");
     }
     if (moment().isAfter(check4PM)) {
-        threePM.addClass("bg-secondary").removeClass("bg-success bg-alert");
-        threePM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
+        threePM.addClass("past").removeClass("future present");
+        threePM.children().addClass("past").removeClass("future present");
     }
     if (moment().isAfter(check5PM)) {
-        fourPM.addClass("bg-secondary").removeClass("bg-success bg-alert");
-        fourPM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
+        fourPM.addClass("past").removeClass("future present");
+        fourPM.children().addClass("past").removeClass("future present");
     }
     if (moment().isAfter(check6PM)) {
-        fivePM.addClass("bg-secondary").removeClass("bg-success bg-alert");
-        fivePM.children().addClass("bg-secondary").removeClass("bg-success bg-alert");
+        fivePM.addClass("past").removeClass("future present");
+        fivePM.children().addClass("past").removeClass("future present");
     }
 }
 
-// var btn9 = getElementById("9button");
-
-// btn9.addEventListener("click", function()) {
-//     var input9am = document.getElementById("9input").value;
-//     console.log(input9am);
-//     localStorage.setItem("9am" , JSON.stringify(input9am));
-// });
-
-
-// Event Listeners
+// Event Listeners to save text to localstorage
 $("#9button").click( function() {
     var input9am = document.getElementById("9input").value;
-    console.log(input9am);
     localStorage.setItem("9am" , JSON.stringify(input9am));
 });
 
+$("#10button").click( function() {
+    var input10am = document.getElementById("10input").value;
+    localStorage.setItem("10am" , JSON.stringify(input10am));
+});
+
+$("#11button").click( function() {
+    var input11am = document.getElementById("11input").value;
+    localStorage.setItem("11am" , JSON.stringify(input11am));
+});
+
+$("#12button").click( function() {
+    var input12pm = document.getElementById("12input").value;
+    localStorage.setItem("12pm" , JSON.stringify(input12pm));
+});
+
+$("#1button").click( function() {
+    var input1pm = document.getElementById("1input").value;
+    localStorage.setItem("1pm" , JSON.stringify(input1pm));
+});
+
+$("#2button").click( function() {
+    var input2pm = document.getElementById("2input").value;
+    localStorage.setItem("2pm" , JSON.stringify(input2pm));
+});
+
+$("#3button").click( function() {
+    var input3pm = document.getElementById("3input").value;
+    localStorage.setItem("3pm" , JSON.stringify(input3pm));
+});
+
+$("#4button").click( function() {
+    var input4pm = document.getElementById("4input").value;
+    localStorage.setItem("4pm" , JSON.stringify(input4pm));
+});
+
+$("#5button").click( function() {
+    var input5pm = document.getElementById("5input").value;
+    localStorage.setItem("5pm" , JSON.stringify(input5pm));
+});
+
+// retrieving from local storage
 var output9am = JSON.parse(localStorage.getItem("9am"));
 document.getElementById("9input").value = output9am;
 
-// Calls displayDay so there isn't a 1 second lag between opening page and the day displaying the first time. then calls timeUpdate to continually check the time and update the display day when it rolls over. timeUpdate also continually checks for the time and updates background colors of cells in the table as appropriate
+var output10am = JSON.parse(localStorage.getItem("10am"));
+document.getElementById("10input").value = output10am;
+
+var output11am = JSON.parse(localStorage.getItem("11am"));
+document.getElementById("11input").value = output11am;
+
+var output12pm = JSON.parse(localStorage.getItem("12pm"));
+document.getElementById("12input").value = output12pm;
+
+var output1pm = JSON.parse(localStorage.getItem("1pm"));
+document.getElementById("1input").value = output1pm;
+
+var output2pm = JSON.parse(localStorage.getItem("2pm"));
+document.getElementById("2input").value = output2pm;
+
+var output3pm = JSON.parse(localStorage.getItem("3pm"));
+document.getElementById("3input").value = output3pm;
+
+var output4pm = JSON.parse(localStorage.getItem("4pm"));
+document.getElementById("4input").value = output4pm;
+
+var output5pm = JSON.parse(localStorage.getItem("5pm"));
+document.getElementById("5input").value = output5pm;
+// Calls displayDay and updatecolors so there isn't a 1 second lag between opening page and the day displaying the first time. then calls timeUpdate to continually check the time and update the display day when it rolls over. timeUpdate also continually checks for the time and updates background colors of cells in the table as appropriate
 displayDay();
 timeUpdate();
+updateColors();
