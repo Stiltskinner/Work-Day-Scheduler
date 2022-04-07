@@ -11,6 +11,8 @@ var twoPM = $("#2PM");
 var threePM = $("#3PM");
 var fourPM = $("#4PM");
 var fivePM = $("#5PM");
+var buttons = $("button")
+var inputs = $("input");
 
 // Global variables
 var check9AM = moment("9:00am", "h:mm:ss a");
@@ -36,11 +38,19 @@ function timeUpdate() {
    setInterval(updateColors, 1000);
 }
 
+// green start sets all the time blocks to green when the app loads before upDateColors fires, in case the user opens the app after 9 am, to make sure the time blocks next yet reached are green.
+
+function greenStart () {
+    inputs.addClass("future");
+    inputs.parent().addClass("future");
+}
+
 // This function changes the background color of the Event column of the table depending on the time. If it is the current hour, it sets it to red, if it's after the current hour, sets it to gray, and it sets them all to green if it's before 9 AM, basically meaning they all reset to green after midnight
 function updateColors() {
     if (moment().isBefore(check9AM)) {
         eventTable.children().children().children("td").children().removeClass("future past present").addClass("future");
         eventTable.children().children().children("td").removeClass("future past present").addClass("future");
+        buttons.parent().removeClass("future past present");
     }
     if (moment().isBetween(check9AM, check10AM)) {
         nineAM.addClass("present").removeClass("future past");
@@ -192,4 +202,5 @@ document.getElementById("5input").value = output5pm;
 // Calls displayDay and updatecolors so there isn't a 1 second lag between opening page and the day displaying the first time. then calls timeUpdate to continually check the time and update the display day when it rolls over. timeUpdate also continually checks for the time and updates background colors of cells in the table as appropriate
 displayDay();
 timeUpdate();
+greenStart();
 updateColors();
