@@ -43,40 +43,40 @@ function updateColors() {
         eventTable.children().children().children("td").removeClass("future past present").addClass("future");
     }
     if (moment().isBetween(check9AM, check10AM)) {
-        nineAM.addClass("bg-danger").removeClass("future past");
-        nineAM.children().addClass("bg-danger").removeClass("future past");
+        nineAM.addClass("present").removeClass("future past");
+        nineAM.children().addClass("present").removeClass("future past");
     }
     if (moment().isBetween(check10AM, check11AM)) {
-        tenAM.addClass("bg-danger").removeClass("future past");
-        tenAM.children().addClass("bg-danger").removeClass("future past");
+        tenAM.addClass("present").removeClass("future past");
+        tenAM.children().addClass("present").removeClass("future past");
     }
     if (moment().isBetween(check11AM, check12PM)) {
-        elevenAM.addClass("bg-danger").removeClass("future past");
-        elevenAM.children().addClass("bg-danger").removeClass("future past");
+        elevenAM.addClass("present").removeClass("future past");
+        elevenAM.children().addClass("present").removeClass("future past");
     }
     if (moment().isBetween(check12PM, check1PM)) {
-        twelvePM.addClass("bg-danger").removeClass("future past");
-        twelvePM.children().addClass("bg-danger").removeClass("future past");
+        twelvePM.addClass("present").removeClass("future past");
+        twelvePM.children().addClass("present").removeClass("future past");
     }
     if (moment().isBetween(check1PM, check2PM)) {
-        onePM.addClass("bg-danger").removeClass("future past");
-        onePM.children().addClass("bg-danger").removeClass("future past");
+        onePM.addClass("present").removeClass("future past");
+        onePM.children().addClass("present").removeClass("future past");
     }
     if (moment().isBetween(check2PM, check3PM)) {
-        twoPM.addClass("bg-danger").removeClass("future past");
-        twoPM.children().addClass("bg-danger").removeClass("future past");
+        twoPM.addClass("present").removeClass("future past");
+        twoPM.children().addClass("present").removeClass("future past");
     }
     if (moment().isBetween(check3PM, check4PM)) {
-        threePM.addClass("bg-danger").removeClass("future past");
-        threePM.children().addClass("bg-danger").removeClass("future past");
+        threePM.addClass("present").removeClass("future past");
+        threePM.children().addClass("present").removeClass("future past");
     }
     if (moment().isBetween(check4PM, check5PM)) {
-        fourPM.addClass("bg-danger").removeClass("future past");
-        fourPM.children().addClass("bg-danger").removeClass("future past");
+        fourPM.addClass("present").removeClass("future past");
+        fourPM.children().addClass("present").removeClass("future past");
     }
     if (moment().isBetween(check5PM, check6PM)) {
-        fivePM.addClass("bg-danger").removeClass("future past");
-        fivePM.children().addClass("bg-danger").removeClass("future past");
+        fivePM.addClass("present").removeClass("future past");
+        fivePM.children().addClass("present").removeClass("future past");
     }
     if (moment().isAfter(check10AM)) {
         nineAM.addClass("past").removeClass("future present");
