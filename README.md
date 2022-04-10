@@ -20,6 +20,10 @@ There are unique event listeners for each button. I attempted to create a more e
 Finally, the displayDay and updateColors functions are called right away so there is not a delay between the page loading and setInterval firing them. timeUpdate fires to get the setIntervals going and continue to fire those functionse every second.
 <br>
 Repository Link: https://github.com/Stiltskinner/Work-Day-Scheduler
+<br>
 Deployed webpage: https://stiltskinner.github.io/Work-Day-Scheduler/
+<br>
 The screenshot of the webpage below was taken after 5 pm, so all the boxes are gray. However, they do change colors at the appropriate times.
+<br>
+
 ![Screenshot of webpage](./Assets/Workday%20Scheduler%20Screenshot.png)

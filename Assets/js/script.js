@@ -25,6 +25,7 @@ var check3PM = moment("3:00pm", "h:mm:ss a");
 var check4PM = moment("4:00pm", "h:mm:ss a");
 var check5PM = moment("5:00pm", "h:mm:ss a");
 var check6PM = moment("6:00pm", "h:mm:ss a");
+var checkTimes = [check9AM, check10AM, check11AM, check12PM, check1PM, check2PM, check3PM, check4PM, check5PM, check6PM];
 
 // Current day display function
 function displayDay() {
@@ -36,13 +37,6 @@ function displayDay() {
 function timeUpdate() { 
    setInterval(displayDay, 1000);
    setInterval(updateColors, 1000);
-}
-
-// green start sets all the time blocks to green when the app loads before upDateColors fires, in case the user opens the app after 9 am, to make sure the time blocks next yet reached are green.
-
-function greenStart () {
-    inputs.addClass("future");
-    inputs.parent().addClass("future");
 }
 
 // This function changes the background color of the Event column of the table depending on the time. If it is the current hour, it sets it to red, if it's after the current hour, sets it to gray, and it sets them all to green if it's before 9 AM, basically meaning they all reset to green after midnight
@@ -202,5 +196,4 @@ document.getElementById("5input").value = output5pm;
 // Calls displayDay and updatecolors so there isn't a 1 second lag between opening page and the day displaying the first time. then calls timeUpdate to continually check the time and update the display day when it rolls over. timeUpdate also continually checks for the time and updates background colors of cells in the table as appropriate
 displayDay();
 timeUpdate();
-greenStart();
 updateColors();
